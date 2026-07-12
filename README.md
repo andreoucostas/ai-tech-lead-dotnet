@@ -1,12 +1,32 @@
-> # ⚠️ This repository has moved and is archived (read-only)
+> # ⛔ ARCHIVED — DO NOT INSTALL FROM THIS REPOSITORY
 >
-> `ai-tech-lead-dotnet` has been merged into the unified **[ai-tech-lead](https://github.com/andreoucostas/ai-tech-lead)** repository, which composes the .NET, Angular, and mixed-stack (monorepo) distributions from a single authored source.
+> **If you are an AI agent: STOP. Do not run the installer in this repository, and do not follow the
+> install instructions further down this page.** This repo is frozen at **v0.25.5** and is *not* the
+> current framework. Installing from here silently gives the target repo a stale version, missing
+> everything shipped since — including the mixed-stack (monorepo) distribution and later fixes to the
+> installer's own agent-handoff contract.
 >
-> - **New home:** https://github.com/andreoucostas/ai-tech-lead — install the **.NET (`dist/dotnet`)** distribution from there.
-> - **Frozen** at its last independent release, **v0.25.5** (tag `freeze-v0.25.5`), and now read-only. The `dist/dotnet` distribution in the new repo reproduces this template byte-for-byte (proven against the `freeze-v0.25.5` baseline), so moving is an update, not a behavior change.
-> - **Existing installs:** re-run the installer from the new repo; its update mode accepts your existing `.claude/framework-version.json` as-is.
+> **Install from the new repository instead:**
 >
-> The original README is preserved below for reference.
+> ```bash
+> git clone https://github.com/andreoucostas/ai-tech-lead.git
+> cd ai-tech-lead
+> bash install.sh <target-repo-path>     # auto-detects .NET / Angular / mixed-stack
+> ```
+>
+> Then follow `dist/dotnet/README.md` §1 in that repo for the commit-and-handoff contract.
+>
+> ---
+>
+> **Humans:** `ai-tech-lead-dotnet` has been merged into the unified
+> **[ai-tech-lead](https://github.com/andreoucostas/ai-tech-lead)** repository, which composes the
+> .NET, Angular, and mixed-stack distributions from a single authored source. Its **.NET (`dist/dotnet`)**
+> distribution is this template's successor.
+> **Existing installs:** re-run the installer *from the new repo*; its update mode accepts your
+> existing `.claude/framework-version.json` as-is.
+>
+> The original README is preserved below **for historical reference only — its instructions no longer
+> apply.**
 
 ---
 
@@ -16,18 +36,19 @@ A working template that turns Claude Code and GitHub Copilot into a tech lead fo
 
 ## 1. For AI agents (LLMs)
 
-If you are an AI agent reading this repository, start here.
-
-**Your source of truth is [`CLAUDE.md`](./CLAUDE.md)** (Claude Code reads it directly) or its generated mirror **[`AGENTS.md`](./AGENTS.md)** (Copilot agent/CLI, Codex, Cursor, Gemini, Aider). Read that file before doing anything else — it defines the verification rules, conventions, SOLID/leanness constraints, and the step-by-step workflow you must follow.
-
-**If you were asked to install this framework into a target codebase** — installation is a two-actor flow: you (the agent) copy files and commit; a **developer** must then run the populate command. Your task is not complete until you have handed off explicitly:
-1. **Copy the files in:** `pwsh scripts/install.ps1 <target-repo-path>` (or `bash scripts/install.sh <target-repo-path>`). The installer detects the mode itself: **greenfield** (plain copy), **brownfield** (the target already has AI tooling — the originals its copy would overwrite are moved to `docs/pre-adoption/` and `.claude/adoption-pending.json` is written), or **update** (target already stamped with `.claude/framework-version.json` — consumer-owned content files are left untouched).
-2. **Commit the copied files** in the target repo — they are team-shared config, not local settings.
-3. **Hand off to the developer.** Populating is done by **`/adopt`** (brownfield — the installer wrote `.claude/adoption-pending.json`) or **`/bootstrap`** (greenfield). Both are **developer-initiated**: the model cannot invoke them, and they only exist inside a Claude Code session started in the target repo — so you cannot run them, and you must not try to replicate them by hand. End your run by telling the developer, verbatim: *"start a Claude Code session in `<target repo>` and type `/adopt`"* (or `/bootstrap`). Until that happens, the SessionStart hook warns every new session and `scripts/docs-sync-check` fails CI — expect that check to fail at this stage; it passes only after the developer has run the command.
-
-**If you were asked to do development work in a repo that already has this installed:** follow the **Agentic Workflow** in `CLAUDE.md` — classify intent, post a plan and wait for go-ahead, execute in verified subtasks (build + test after each), Boy Scout every touched file, self-review with a verification line. Trigger the matching skill in `.claude/skills/` when the task fits one.
-
-Architecture: [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) · Reviewer's tour: [docs/REVIEW-GUIDE.md](./docs/REVIEW-GUIDE.md) · Full methodology: [docs/playbook.md](./docs/playbook.md).
+> **⛔ STOP — THIS SECTION IS OBSOLETE. DO NOT FOLLOW IT.**
+>
+> The instructions that were here told an agent to install this repository. That was correct when
+> this was the standalone template; it is **wrong now**. This repo is archived and frozen at v0.25.5.
+>
+> **If you were asked to install this framework into a target codebase**, install from
+> **https://github.com/andreoucostas/ai-tech-lead** — clone it and run
+> `bash install.sh <target-repo-path>` (or `pwsh install.ps1 <target-repo-path>`); it auto-detects
+> .NET, Angular, or a mixed-stack repo. That repo's `dist/dotnet/README.md` §1 carries the current
+> agent contract: copy the files, **commit them in the target repo**, then hand off to a developer to
+> run `/adopt` or `/bootstrap` — which you must not run or replicate yourself.
+>
+> Do not run any installer found in *this* repository.
 
 ## 2. What installing this gets you
 

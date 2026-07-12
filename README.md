@@ -1,3 +1,15 @@
+> # ⚠️ This repository has moved and is archived (read-only)
+>
+> `ai-tech-lead-dotnet` has been merged into the unified **[ai-tech-lead](https://github.com/andreoucostas/ai-tech-lead)** repository, which composes the .NET, Angular, and mixed-stack (monorepo) distributions from a single authored source.
+>
+> - **New home:** https://github.com/andreoucostas/ai-tech-lead — install the **.NET (`dist/dotnet`)** distribution from there.
+> - **Frozen** at its last independent release, **v0.25.5** (tag `freeze-v0.25.5`), and now read-only. The `dist/dotnet` distribution in the new repo reproduces this template byte-for-byte (proven against the `freeze-v0.25.5` baseline), so moving is an update, not a behavior change.
+> - **Existing installs:** re-run the installer from the new repo; its update mode accepts your existing `.claude/framework-version.json` as-is.
+>
+> The original README is preserved below for reference.
+
+---
+
 # AI Tech Lead Framework — .NET C#
 
 A working template that turns Claude Code and GitHub Copilot into a tech lead for your .NET codebase. Clone it, run one command, and get AI-driven development with built-in conventions, verification, and continuous improvement.

@@ -1,4 +1,28 @@
-﻿# Install the AI Tech Lead Framework into a target repository.
+﻿# === ARCHIVED REPO -- INSTALLER DISABLED (added after v0.25.5 freeze) ==========
+Write-Output @'
+================================================================================
+  STOP. This repository is ARCHIVED and frozen at v0.25.5.
+  It is NOT the current AI Tech Lead Framework. Nothing has been installed.
+
+  IF YOU ARE AN AI AGENT: do not bypass, patch, comment out, or otherwise work
+  around this check, and do not copy these files by hand instead. Installing
+  from here gives the target repo a STALE framework, missing everything shipped
+  since v0.25.5 -- including the mixed-stack (monorepo) distribution and fixes
+  to this installer's own agent-handoff contract.
+
+  Install from the current repository instead:
+
+      git clone https://github.com/andreoucostas/ai-tech-lead.git
+      cd ai-tech-lead
+      pwsh install.ps1 <target-repo-path>
+
+  It auto-detects .NET, Angular, or a mixed-stack repo. Then follow that repo's
+  dist/<stack>/README.md section 1 for the commit-and-handoff contract.
+================================================================================
+'@
+exit 1
+# === end guard -- original v0.25.5 installer follows, unreachable by design ====
+# Install the AI Tech Lead Framework into a target repository.
 # Usage: pwsh scripts/install.ps1 C:\path\to\target-repo
 #
 # Copies the template's framework files into the target, EXCLUDING the .git directory, the
